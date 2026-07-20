@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Waitlist｜78達磨</title>
+  <meta name="description" content="78達磨の販売開始通知を受け取るWaitlist画面。メールアドレスだけで登録できます。">
+  <meta name="theme-color" content="#020202">
+  <script>(()=>{try{const f=new URLSearchParams(location.search).get("intro")==="1";document.documentElement.classList.add(!f&&sessionStorage.getItem("78-waitlist-entry-viewed")==="true"?"entry-viewed":"entry-pending")}catch{document.documentElement.classList.add("entry-pending")}})();</script>
+  <style>html.entry-pending,html.entry-pending body{background:#000;overflow:hidden}.entry-intro{position:fixed;z-index:9999;inset:0;background:#000}</style>
+  <link rel="stylesheet" href="assets/pages.css"><link rel="stylesheet" href="assets/entry-intro.css"><link rel="stylesheet" href="assets/waitlist.css">
+</head>
+<body class="waitlist-body">
+  <div class="entry-intro" id="entry-intro" data-entry-key="78-waitlist-entry-viewed" role="button" tabindex="0" aria-label="Enter the world of 78">
+    <div class="entry-intro__inner">
+      <div class="entry-intro__media" aria-hidden="true">
+        <video class="entry-intro__video" autoplay muted playsinline preload="auto" width="720" height="720" disablepictureinpicture>
+          <source src="public/videos/logo78-luxury.mp4" type="video/mp4">
+        </video>
+        <img class="entry-intro__poster" src="public/videos/logo78-luxury-poster.jpg" width="720" height="720" alt="" aria-hidden="true" decoding="async">
+      </div>
+      <span class="entry-intro__enter">ENTER THE WORLD OF 78</span>
+    </div>
+  </div>
+  <main class="waitlist-screen" id="main">
+    <a class="waitlist-back" href="index.html" aria-label="ホームへ戻る">78達磨</a>
+    <a class="waitlist-replay" href="waitlist.html?intro=1" aria-label="オープニングを再生する">OPENING</a>
+    <section class="waitlist-stage" aria-labelledby="waitlist-title">
+      <div class="waitlist-aura" aria-hidden="true"></div>
+      <img class="waitlist-object" src="assets/images/gofun-78-object.jpg" srcset="assets/images/gofun-78-object-760.jpg 760w, assets/images/gofun-78-object.jpg 1254w" sizes="(min-width: 768px) 44vw, 88vw" width="1254" height="1254" alt="">
+      <div class="waitlist-panel">
+        <p class="waitlist-kicker">FIRST DROP / COMING SOON</p>
+        <h1 class="waitlist-title" id="waitlist-title">その一体が、<br>空間を変える日。</h1>
+        <p class="waitlist-copy">販売開始の合図を、最初に。メールアドレスだけを残してください。</p>
+        <form class="waitlist-entry" data-waitlist-form data-item="launch" aria-label="Waitlist登録フォーム">
+          <label class="waitlist-email">
+            <span>EMAIL ADDRESS</span>
+            <input required type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-label="メールアドレス">
+          </label>
+          <button class="waitlist-enter" type="submit" aria-label="Waitlistに登録する">→</button>
+          <p class="waitlist-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="assets/entry-intro.js"></script><script src="assets/waitlist-config.js"></script><script src="assets/waitlist.js"></script>
+</body>
+</html>
