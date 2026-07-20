@@ -1,0 +1,12 @@
+.contact-hero{--hero-glow:rgba(185,154,91,.12)}
+.contact-grid{display:grid;gap:3.5rem}
+.faq-list{border-top:1px solid rgba(17,17,17,.22)}
+.faq-item{border-bottom:1px solid rgba(17,17,17,.22)}
+.faq-question{display:grid;width:100%;min-height:4rem;grid-template-columns:1fr auto;align-items:center;gap:.8rem;border:0;padding:1.4rem 0;background:transparent;color:var(--ink);font:400 clamp(1rem,1.8vw,1.3rem)/1.65 var(--serif);text-align:left}
+.faq-question span{display:flex;align-items:baseline;gap:.7rem}.faq-question small{min-width:1.55rem;color:#8b7958;font:500 .52rem/1 var(--sans);letter-spacing:.12em}
+.faq-question i{position:relative;width:1rem;height:1rem}.faq-question i::before,.faq-question i::after{content:"";position:absolute;top:50%;left:50%;width:.9rem;height:1px;background:currentColor;transition:transform .55s var(--ease)}.faq-question i::before{transform:translate(-50%,-50%)}.faq-question i::after{transform:translate(-50%,-50%) rotate(90deg)}.faq-question[aria-expanded="true"] i::after{transform:translate(-50%,-50%) rotate(0)}
+.faq-answer{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .65s var(--ease),opacity .5s ease}.faq-answer>div{overflow:hidden}.faq-answer p{max-width:40rem;margin:0;padding:0 1.6rem 1.6rem 2.25rem;color:#686159;font-size:.76rem}.faq-question[aria-expanded="true"]+.faq-answer{grid-template-rows:1fr;opacity:1}
+.contact-section{background:var(--charcoal)}.contact-section .heading{color:var(--ivory)}.contact-note{margin-top:3rem;color:var(--muted);font-size:.68rem;letter-spacing:.04em}
+.contact-form{align-self:start}.contact-form .field{position:relative}.contact-form .field input,.contact-form .field textarea,.contact-form .field select{border-color:var(--line);color:var(--ivory)}.contact-form .field input:focus,.contact-form .field textarea:focus,.contact-form .field select:focus{outline:0;border-color:var(--champagne)}.optional{position:absolute;top:0;right:0;color:var(--muted);font-size:.55rem}.contact-submit{justify-self:start}.form-note{margin:0;color:var(--muted);font-size:.62rem}
+@media(min-width:48rem){.contact-grid{grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(4rem,9vw,9rem)}.faq-question{gap:1.5rem;padding:1.65rem 0}.faq-question span{gap:1.2rem}.faq-answer p{padding:0 3rem 1.8rem}}
+@media(prefers-reduced-motion:reduce){.faq-answer{transition:none}}
