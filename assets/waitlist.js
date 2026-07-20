@@ -15,6 +15,15 @@
     message.classList.toggle("is-success",type==="success");
     message.classList.toggle("is-error",type==="error");
   };
+  const showComplete=email=>{
+    const screen=document.querySelector(".waitlist-screen");
+    const complete=document.querySelector(".waitlist-complete");
+    const emailTarget=document.querySelector("[data-waitlist-email]");
+    if(emailTarget)emailTarget.textContent=email;
+    if(complete)complete.setAttribute("aria-hidden","false");
+    screen?.classList.add("is-complete");
+    requestAnimationFrame(()=>complete?.focus?.({preventScroll:true}));
+  };
   const collect=form=>{
     const data=new FormData(form);
     return {
@@ -41,7 +50,9 @@
       return true;
     }
     const response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(entry)});
-    if(!response.ok)throw new Error("waitlist endpoint failed");
+    let result=null;
+    try{result=await response.json()}catch{}
+    if(!response.ok||!result?.ok)throw new Error(result?.error||"waitlist endpoint failed");
     return true;
   };
 
@@ -60,6 +71,7 @@
       setMessage(form,"登録しました。販売開始時にメールでお知らせします。","success");
       const emailInput=form.querySelector("input[name='email']");
       if(emailInput)emailInput.value="";
+      showComplete(entry.email);
     }catch{
       setMessage(form,"送信できませんでした。時間をおいてもう一度お試しください。","error");
     }finally{

@@ -84,6 +84,7 @@
   width:min(100%,41rem);
   padding-bottom:clamp(.5rem,4vh,3rem);
   animation:waitlistRise 1s cubic-bezier(.22,1,.36,1) .12s both;
+  transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1),filter .72s cubic-bezier(.22,1,.36,1);
 }
 .waitlist-kicker{
   margin:0 0 1.1rem;
@@ -156,6 +157,52 @@
 }
 .waitlist-entry .waitlist-message.is-success{color:#d6c99d}
 .waitlist-entry .waitlist-message.is-error{color:#d9a39c}
+.waitlist-complete{
+  position:absolute;
+  left:clamp(1rem,5vw,6rem);
+  bottom:calc(2.2rem + env(safe-area-inset-bottom));
+  width:min(calc(100% - 2rem),41rem);
+  padding-bottom:clamp(.5rem,4vh,3rem);
+  opacity:0;
+  transform:translateY(1.2rem);
+  filter:blur(.45rem);
+  pointer-events:none;
+  transition:opacity .86s cubic-bezier(.22,1,.36,1),transform .86s cubic-bezier(.22,1,.36,1),filter .86s cubic-bezier(.22,1,.36,1);
+}
+.waitlist-complete:focus{outline:0}
+.waitlist-complete__title{
+  margin:0;
+  color:#fbf7ef;
+  font:400 clamp(3.2rem,10vw,7rem)/.94 var(--serif);
+  letter-spacing:-.06em;
+}
+.waitlist-complete__copy{
+  max-width:34rem;
+  margin:1.35rem 0 0;
+  color:rgba(247,241,232,.76);
+  font:400 clamp(.98rem,2vw,1.22rem)/1.95 var(--serif);
+}
+.waitlist-complete__copy span{color:#f7f1e8;border-bottom:1px solid rgba(247,241,232,.34)}
+.waitlist-complete__note{
+  max-width:31rem;
+  margin:1.2rem 0 0;
+  color:rgba(247,241,232,.5);
+  font:.68rem/1.8 var(--sans);
+  letter-spacing:.04em;
+}
+.waitlist-screen.is-complete .waitlist-panel{
+  opacity:0;
+  transform:translateY(-.8rem);
+  filter:blur(.35rem);
+  pointer-events:none;
+}
+.waitlist-screen.is-complete .waitlist-complete{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+  pointer-events:auto;
+}
+.waitlist-screen.is-complete .waitlist-object{opacity:.28}
 @keyframes waitlistRise{from{opacity:0;transform:translateY(1.6rem)}to{opacity:1;transform:translateY(0)}}
 @keyframes waitlistObject{from{opacity:0;transform:scale(1.035) translateY(1.4rem)}to{opacity:.46;transform:scale(1) translateY(0)}}
 @keyframes waitlistAura{from{opacity:.55;transform:scale(.96)}to{opacity:.9;transform:scale(1.04)}}
@@ -166,6 +213,8 @@
   .waitlist-object{left:50%;right:auto;bottom:34%;width:min(92vw,28rem);opacity:.34;animation:waitlistObjectMobile 1.4s cubic-bezier(.22,1,.36,1) both}
   .waitlist-title{font-size:clamp(3.2rem,17vw,5.8rem)}
   .waitlist-entry{grid-template-columns:1fr 3.35rem}
+  .waitlist-complete{left:1rem;bottom:calc(2.2rem + env(safe-area-inset-bottom));width:calc(100% - 2rem)}
+  .waitlist-complete__title{font-size:clamp(3rem,15vw,5.4rem)}
 }
 @media(max-width:23rem){
   .waitlist-entry{grid-template-columns:1fr}
@@ -173,5 +222,5 @@
 }
 @media(prefers-reduced-motion:reduce){
   .waitlist-aura,.waitlist-object,.waitlist-panel{animation:none}
-  .waitlist-back,.waitlist-enter{transition:none}
+  .waitlist-back,.waitlist-enter,.waitlist-panel,.waitlist-complete{transition:none}
 }

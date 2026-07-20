@@ -1,6 +1,36 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/waitlist.html"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/waitlist.html"
+    },
+    {
+      "source": "/collection.html",
+      "destination": "/waitlist.html"
+    },
+    {
+      "source": "/product.html",
+      "destination": "/waitlist.html"
+    },
+    {
+      "source": "/philosophy.html",
+      "destination": "/waitlist.html"
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/waitlist.html"
+    },
+    {
+      "source": "/checkout.html",
+      "destination": "/waitlist.html"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

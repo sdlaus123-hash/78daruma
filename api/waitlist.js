@@ -50,7 +50,25 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    return res.status(200).json({ ok: true });
+    let googleResult = null;
+    try {
+      googleResult = JSON.parse(responseText);
+    } catch (error) {
+      return res.status(502).json({
+        ok: false,
+        error: "invalid_google_script_response",
+        detail: responseText.slice(0, 160)
+      });
+    }
+
+    if (!googleResult.ok) {
+      return res.status(502).json({
+        ok: false,
+        error: googleResult.error || "google_script_rejected"
+      });
+    }
+
+    return res.status(200).json({ ok: true, status: googleResult.status || "created" });
   } catch (error) {
     return res.status(500).json({ ok: false, error: "waitlist_failed" });
   }
